@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://vpnopen.github.io/news/article-98148.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>JavaScript如何从数组中滤除素数</title>
+        <meta name="description" content="我们需要编写一个JavaScript函数，该函数接受以下数字数组， const&nbsp;arr&nbsp;=&nbsp;[34,&nbsp;56,&nbsp;3,&nbsp;56,&nbsp;4,&" />
+        <link rel="icon" href="/assets/website/img/surgenode/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Open VPN 节点订阅中文官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://vpnopen.github.io/news/article-98148.htm" />
+    <meta property="og:site_name" content="Open VPN 节点订阅中文官网" />
+    <meta property="og:title" content="JavaScript如何从数组中滤除素数" />
+    <meta property="og:image" content="https://vpnopen.github.io/uploads/20240723/5e75c5a4895c63f30f3e2ed20bbb7f71.webp" />
+        <meta property="og:release_date" content="2025-04-17T09:01:49" />
+    <meta property="og:updated_time" content="2025-04-17T09:01:49" />
+        <meta property="og:description" content="我们需要编写一个JavaScript函数，该函数接受以下数字数组， const&nbsp;arr&nbsp;=&nbsp;[34,&nbsp;56,&nbsp;3,&nbsp;56,&nbsp;4,&" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="JavaScript如何从数组中滤除素数">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- Bootstrap -->
+    <link href="/assets/website/css/surgenode/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/website/css/surgenode/style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="/assets/website/css/surgenode/font-awesome.min.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-79V7YWYKV1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-79V7YWYKV1');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!-- header-section start -->
+<div class="header navbar-fixed-top">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-2 col-sm-12 col-xs-12">
+                <a href="/" class="navbar-brand">
+                                <span>Open VPN</span>
+                                </a>
+            </div>
+            <div class="col-lg-8 col-md-10 col-sm-12 col-xs-12">
+                <div class="navigation">
+                    <div id="navigation">
+                        <ul>
+                                                        <li><a href="/" title="首页">首页</a></li>
+                                                        <li><a href="/free-nodes/" title="免费节点">免费节点</a></li>
+                                                        <li><a href="/paid-subscribe/" title="推荐机场">推荐机场</a></li>
+                                                        <li><a href="/news/" title="新闻资讯">新闻资讯</a></li>
+                                                        <li><a href="/client.htm" title="客户端">客户端</a></li>
+                                                    </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- header-section close -->
+    <!-- header-section close -->
+    <div class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="page-section">
+                    <div class="col-md-6">
+                        <div class="page-description">
+                            <h1 class="page-title">JavaScript如何从数组中滤除素数</h1>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="page-breadcrumb">
+                            <ol class="breadcrumb">
+                                <li><a href="/">首页</a></li>
+                                <li><a href="/news/">新闻资讯</a></li>
+                                <li>正文</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--pageheader close -->
+        <!-- hero-section close -->
+    <div class="space-medium">
+        <!-- service-section start -->
+        <div class="container">
+            <div class="row">
+                <!-- service start -->
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Node官网订阅站" data-url="https://clashnode.github.io">
+                  				  				  				<p>我们需要编写一个JavaScript函数，该函数接受以下数字数组，</p> <pre>const&nbsp;arr&nbsp;=&nbsp;[34,&nbsp;56,&nbsp;3,&nbsp;56,&nbsp;4,&nbsp;343,&nbsp;68,&nbsp;56,&nbsp;34,&nbsp;87,&nbsp;8,&nbsp;45,&nbsp;34];</pre> <p>并返回一个不包含任何质数的新过滤数组。</p> <h2>示例</h2> <p>以下是代码-</p> <pre>const&nbsp;arr&nbsp;=&nbsp;[34,&nbsp;56,&nbsp;3,&nbsp;56,&nbsp;4,&nbsp;343,&nbsp;68,&nbsp;56,&nbsp;34,&nbsp;87,&nbsp;8,&nbsp;45,&nbsp;34]; const&nbsp;isPrime&nbsp;=&nbsp;n&nbsp;=&gt;&nbsp;{ &nbsp;&nbsp;&nbsp;if&nbsp;(n===1){ &nbsp;&nbsp;&nbsp;return&nbsp;false; &nbsp;&nbsp;&nbsp;}else&nbsp;if(n&nbsp;===&nbsp;2){ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;true; &nbsp;&nbsp;&nbsp;}else{ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(let&nbsp;x&nbsp;=&nbsp;2;&nbsp;x&nbsp;&lt;&nbsp;n;&nbsp;x++){ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(n&nbsp;%&nbsp;x&nbsp;===&nbsp;0){ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;false; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;true; &nbsp;&nbsp;&nbsp;}; }; const&nbsp;filterPrime&nbsp;=&nbsp;arr&nbsp;=&gt;&nbsp;{ &nbsp;&nbsp;&nbsp;const&nbsp;filtered&nbsp;=&nbsp;arr.filter(el&nbsp;=&gt;&nbsp;!isPrime(el)); &nbsp;&nbsp;&nbsp;return&nbsp;filtered; }; console.log(filterPrime(arr));</pre> <p>输出结果</p> <p>以下是控制台中的输出-</p> <pre>[ &nbsp;&nbsp;&nbsp;34,&nbsp;56,&nbsp;56,&nbsp;&nbsp;4,&nbsp;343, &nbsp;&nbsp;&nbsp;68,&nbsp;56,&nbsp;34,&nbsp;87,&nbsp;&nbsp;&nbsp;8, &nbsp;&nbsp;&nbsp;45,&nbsp;34 ]</pre> <div></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-97324.htm">宠物寄养协议书（宠物寄养协议书可以产生法律效应吗）</a></p>
+                                        <p>下一个：<a href="/news/article-98149.htm">git 回滚到之前某一commit</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-93653.htm" title="动物医院运营与管理方案（动物医院运营与管理方案怎么写）">动物医院运营与管理方案（动物医院运营与管理方案怎么写）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-2-free-v2ray-subscribe.htm" title="Open VPN | 4月2日20.5M/S|免费Shadowrocket/V2ray/SSR/Clash订阅节点分享">Open VPN | 4月2日20.5M/S|免费Shadowrocket/V2ray/SSR/Clash订阅节点分享</a></li>
+                        <li class="py-2"><a href="/news/article-94486.htm" title="宠物店一年收入多少钱（宠物店一个月利润怎么样）">宠物店一年收入多少钱（宠物店一个月利润怎么样）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-4-node-share-links.htm" title="Open VPN | 4月4日19.7M/S|免费Shadowrocket/SSR/Clash/V2ray订阅节点分享">Open VPN | 4月4日19.7M/S|免费Shadowrocket/SSR/Clash/V2ray订阅节点分享</a></li>
+                        <li class="py-2"><a href="/news/article-87794.htm" title="宠物领养协议书范本简单版图片大全大图（宠物领养协议书范本简单版图片大全大图高清）">宠物领养协议书范本简单版图片大全大图（宠物领养协议书范本简单版图片大全大图高清）</a></li>
+                        <li class="py-2"><a href="/news/article-97324.htm" title="宠物寄养协议书（宠物寄养协议书可以产生法律效应吗）">宠物寄养协议书（宠物寄养协议书可以产生法律效应吗）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-15-node-share-links.htm" title="Open VPN | 4月15日18.2M/S|免费SSR/Clash/Shadowrocket/V2ray订阅节点分享">Open VPN | 4月15日18.2M/S|免费SSR/Clash/Shadowrocket/V2ray订阅节点分享</a></li>
+                        <li class="py-2"><a href="/news/article-92887.htm" title="猫根本不必打三联视频（猫咪不必打猫三联）">猫根本不必打三联视频（猫咪不必打猫三联）</a></li>
+                        <li class="py-2"><a href="/news/article-89165.htm" title="领养宠物要身份证号合理吗 领养宠物要身份证号合理吗安全吗">领养宠物要身份证号合理吗 领养宠物要身份证号合理吗安全吗</a></li>
+                        <li class="py-2"><a href="/news/article-99598.htm" title="线束加工自动化设备(二次线自动化设备)">线束加工自动化设备(二次线自动化设备)</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">57</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">3</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+                <!-- service close -->
+            </div>
+        </div>
+        <!-- service-section close -->
+    </div>
+        <!-- footer start -->
+    <div class="tiny-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                                        <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    Open VPN 节点订阅中文官网 版权所有 Powered by WordPress
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- footer close -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/assets/website/js/frontend/surgenode/jquery.min.js" type="text/javascript"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/assets/website/js/frontend/surgenode/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/surgenode/menumaker.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/surgenode/navigation.js" type="text/javascript"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

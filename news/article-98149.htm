@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://vpnopen.github.io/news/article-98149.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>git 回滚到之前某一commit</title>
+        <meta name="description" content="git log git reset –hard 8ff24a6803173208f3e606e32dfcf82db9ac84d8" />
+        <link rel="icon" href="/assets/website/img/surgenode/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Open VPN 节点订阅中文官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://vpnopen.github.io/news/article-98149.htm" />
+    <meta property="og:site_name" content="Open VPN 节点订阅中文官网" />
+    <meta property="og:title" content="git 回滚到之前某一commit" />
+    <meta property="og:image" content="https://vpnopen.github.io/uploads/20240723/5f49bf0c21fae83cb8ba2e26e0425cce.webp" />
+        <meta property="og:release_date" content="2025-04-17T09:01:49" />
+    <meta property="og:updated_time" content="2025-04-17T09:01:49" />
+        <meta property="og:description" content="git log git reset –hard 8ff24a6803173208f3e606e32dfcf82db9ac84d8" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="git 回滚到之前某一commit">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- Bootstrap -->
+    <link href="/assets/website/css/surgenode/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/website/css/surgenode/style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="/assets/website/css/surgenode/font-awesome.min.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-79V7YWYKV1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-79V7YWYKV1');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!-- header-section start -->
+<div class="header navbar-fixed-top">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-2 col-sm-12 col-xs-12">
+                <a href="/" class="navbar-brand">
+                                <span>Open VPN</span>
+                                </a>
+            </div>
+            <div class="col-lg-8 col-md-10 col-sm-12 col-xs-12">
+                <div class="navigation">
+                    <div id="navigation">
+                        <ul>
+                                                        <li><a href="/" title="首页">首页</a></li>
+                                                        <li><a href="/free-nodes/" title="免费节点">免费节点</a></li>
+                                                        <li><a href="/paid-subscribe/" title="推荐机场">推荐机场</a></li>
+                                                        <li><a href="/news/" title="新闻资讯">新闻资讯</a></li>
+                                                        <li><a href="/client.htm" title="客户端">客户端</a></li>
+                                                    </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- header-section close -->
+    <!-- header-section close -->
+    <div class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="page-section">
+                    <div class="col-md-6">
+                        <div class="page-description">
+                            <h1 class="page-title">git 回滚到之前某一commit</h1>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="page-breadcrumb">
+                            <ol class="breadcrumb">
+                                <li><a href="/">首页</a></li>
+                                <li><a href="/news/">新闻资讯</a></li>
+                                <li>正文</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--pageheader close -->
+        <!-- hero-section close -->
+    <div class="space-medium">
+        <!-- service-section start -->
+        <div class="container">
+            <div class="row">
+                <!-- service start -->
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Node官网订阅站" data-url="https://clashnode.github.io">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <p>git log</p> <p>git reset –hard 8ff24a6803173208f3e606e32dfcf82db9ac84d8</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220609/c9d426b541c0ffd1f8448f305aa23b8c.jpg" alt="git 回滚到之前某一commit"></p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-98148.htm">JavaScript如何从数组中滤除素数</a></p>
+                                        <p>下一个：<a href="/news/article-98778.htm">java8 List&lt;Object&gt;去掉重复对象的几种方法_java</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-4-16-free-high-speed-nodes.htm" title="Open VPN | 4月16日18M/S|免费Shadowrocket/Clash/SSR/V2ray订阅节点分享">Open VPN | 4月16日18M/S|免费Shadowrocket/Clash/SSR/V2ray订阅节点分享</a></li>
+                        <li class="py-2"><a href="/news/article-89901.htm" title="动物疫苗公司招聘信息最新消息（动物疫苗业务员能挣多少）">动物疫苗公司招聘信息最新消息（动物疫苗业务员能挣多少）</a></li>
+                        <li class="py-2"><a href="/news/article-86346.htm" title="适合穷人养的猫有哪些品种（建议穷人养的10种猫）">适合穷人养的猫有哪些品种（建议穷人养的10种猫）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-11-clash-v2ray-ss-ssr.htm" title="Open VPN | 4月11日20.1M/S|免费V2ray/Shadowrocket/Clash/SSR订阅节点分享">Open VPN | 4月11日20.1M/S|免费V2ray/Shadowrocket/Clash/SSR订阅节点分享</a></li>
+                        <li class="py-2"><a href="/news/article-89902.htm" title="宠物打疫苗可以上门服务吗现在（宠物上门打疫苗多少钱）">宠物打疫苗可以上门服务吗现在（宠物上门打疫苗多少钱）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-19-free-node-subscribe-links.htm" title="Open VPN | 4月19日20.1M/S|免费Clash/SSR/Shadowrocket/V2ray订阅节点分享">Open VPN | 4月19日20.1M/S|免费Clash/SSR/Shadowrocket/V2ray订阅节点分享</a></li>
+                        <li class="py-2"><a href="/news/article-95199.htm" title="妙三多猫三联怎么打（妙三多猫三联多少钱）">妙三多猫三联怎么打（妙三多猫三联多少钱）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-13-node-share-links.htm" title="Open VPN | 4月13日22.6M/S|免费Shadowrocket/V2ray/SSR/Clash订阅节点分享">Open VPN | 4月13日22.6M/S|免费Shadowrocket/V2ray/SSR/Clash订阅节点分享</a></li>
+                        <li class="py-2"><a href="/news/article-95200.htm" title="动物医院有公立的吗还是私立的医院 动物医院有公立的吗还是私立的医院好">动物医院有公立的吗还是私立的医院 动物医院有公立的吗还是私立的医院好</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-12-node-share-links.htm" title="Open VPN | 4月12日18.3M/S|免费Clash/SSR/Shadowrocket/V2ray订阅节点分享">Open VPN | 4月12日18.3M/S|免费Clash/SSR/Shadowrocket/V2ray订阅节点分享</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">57</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">3</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+                <!-- service close -->
+            </div>
+        </div>
+        <!-- service-section close -->
+    </div>
+        <!-- footer start -->
+    <div class="tiny-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                                        <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    Open VPN 节点订阅中文官网 版权所有 Powered by WordPress
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- footer close -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/assets/website/js/frontend/surgenode/jquery.min.js" type="text/javascript"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/assets/website/js/frontend/surgenode/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/surgenode/menumaker.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/surgenode/navigation.js" type="text/javascript"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
