@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://vpnopen.github.io/news/article-104075.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>关于springboot转发重定向以及受保护目录的一些规律</title>
+        <meta name="description" content="今天闲来无事，又研究了一下springboot,涉及到了Thymeleaf模板引擎，因为之前接触过jsp，所以上手很快，但是也思考了一些关于转发以及重定向的问题，总结出以下规律 项目结构  首先解释一" />
+        <link rel="icon" href="/assets/website/img/surgenode/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Open VPN 节点订阅中文官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://vpnopen.github.io/news/article-104075.htm" />
+    <meta property="og:site_name" content="Open VPN 节点订阅中文官网" />
+    <meta property="og:title" content="关于springboot转发重定向以及受保护目录的一些规律" />
+    <meta property="og:image" content="https://vpnopen.github.io/uploads/20240723/4672275afdec6a1b8a7a025fef90f8f4.webp" />
+        <meta property="og:release_date" content="2025-04-25T07:09:23" />
+    <meta property="og:updated_time" content="2025-04-25T07:09:23" />
+        <meta property="og:description" content="今天闲来无事，又研究了一下springboot,涉及到了Thymeleaf模板引擎，因为之前接触过jsp，所以上手很快，但是也思考了一些关于转发以及重定向的问题，总结出以下规律 项目结构  首先解释一" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="关于springboot转发重定向以及受保护目录的一些规律">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- Bootstrap -->
+    <link href="/assets/website/css/surgenode/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/website/css/surgenode/style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="/assets/website/css/surgenode/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/website/css/G.css" />
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-79V7YWYKV1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-79V7YWYKV1');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!-- header-section start -->
+<div class="header navbar-fixed-top">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-2 col-sm-12 col-xs-12">
+                <a href="/" class="navbar-brand">
+                                <span>Open VPN</span>
+                                </a>
+            </div>
+            <div class="col-lg-8 col-md-10 col-sm-12 col-xs-12">
+                <div class="navigation">
+                    <div id="navigation">
+                        <ul>
+                                                        <li><a href="/" title="首页">首页</a></li>
+                                                        <li><a href="/free-nodes/" title="免费节点">免费节点</a></li>
+                                                        <li><a href="/paid-subscribe/" title="推荐机场">推荐机场</a></li>
+                                                        <li><a href="/news/" title="新闻资讯">新闻资讯</a></li>
+                                                        <li><a href="/client.htm" title="客户端">客户端</a></li>
+                                                    </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- header-section close -->
+    <!-- header-section close -->
+    <div class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="page-section">
+                    <div class="col-md-6">
+                        <div class="page-description">
+                            <h1 class="page-title">关于springboot转发重定向以及受保护目录的一些规律</h1>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="page-breadcrumb">
+                            <ol class="breadcrumb">
+                                <li><a href="/">首页</a></li>
+                                <li><a href="/news/">新闻资讯</a></li>
+                                <li>正文</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--pageheader close -->
+        <!-- hero-section close -->
+    <div class="space-medium">
+        <!-- service-section start -->
+        <div class="container">
+            <div class="row">
+                <!-- service start -->
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Node官网订阅站" data-url="https://clashnode.github.io">
+                <div class="xcblog-blog-detail xcblog-blog-detail-defined">
+                      				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <p>今天闲来无事，又研究了一下springboot,涉及到了Thymeleaf模板引擎，因为之前接触过jsp，所以上手很快，但是也思考了一些关于转发以及重定向的问题，总结出以下规律</p> <h3 id="项目结构">项目结构</h3> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221201/4ecb15ecb059f2c30b3e07669aeeb77e.jpg" alt="关于springboot转发重定向以及受保护目录的一些规律"></p> <p>首先解释一下每个文件夹的作用，如果你是用的是idea创建的springboot项目，会在项目创建的一开始resources文件夹下自动创建static以及templates文件夹。也就是说项目初始时有<strong>java、resource、static以及templates</strong> 这几个文件夹。<br /> 一般static下存放js以及css样式文件，templates存放html页面。<br /><strong>以上是默认会创建的文件夹以及其作用</strong><br /> 下面我们来说一下转发和重定向的规律。<br /> 首先<strong>static文件夹以及templates文件夹</strong>是受保护的，也就是说相当于你将文件放到了传统的ssh或ssm项目的WEB-INF下了。所以也就是说这两个文件夹下的文件是无法通过url直接访问的，以至于在springmvc下使用重定向会报404。</p> <h3 id="那么希望直接访问的html或者css该如何存放呢">那么希望直接访问的html或者css该如何存放呢？</h3> <p><strong>方式一</strong><br /> 我们可以在resources下创建一个名为public的文件夹，顾名思义，放在此文件夹下的文件是共有的，可以直接通过url访问，当然也可以springmvc重定向访问啦。<br /><strong>方法二</strong><br /> 在main下创建webapp文件夹，将文件放到此文件夹下，效果同上<br /><strong>注！文件夹名字是固定的，起别的名字还是会报404或者无效</strong><br /> 好，说到这里，有的同学应该就会有疑问了，我分别创建了public和webapp而且还起了相同名字的html页面，我访问会进到哪一个？<br /> 首先：最好还是不要这么做，明明两个文件夹效果一样，又何必呢？看个人需求选择一种方式就好啦。<br /> 但是：事实结果告诉我们，被优先选择的是webapp下的文件，如图<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221201/baf03155ac1389ec70b2a0c5cdfb11a3.jpg" alt="关于springboot转发重定向以及受保护目录的一些规律"></p> <h3 id="关于springmvc控制转发还是重定向的写法问题">关于springmvc控制转发还是重定向的写法问题。</h3> <p><strong>转发</strong></p> <pre class="prettyprint"><code class="language-java hljs"><span class="hljs-javadoc">/**  * Created by beyondLi on 2017/6/2.  */</span><span class="hljs-annotation">@Controller</span><span class="hljs-keyword">public</span><span class="hljs-class"><span class="hljs-keyword">class</span><span class="hljs-title">ThymeleafController</span> {<!-- --></span><span class="hljs-annotation">@RequestMapping</span>(value =<span class="hljs-string">"cs"</span>)<span class="hljs-keyword">public</span> String<span class="hljs-title">cs</span>(Model model) {<span class="hljs-keyword">return</span><span class="hljs-string">"index"</span>;     } }</code></pre> <p>转发是不需要手动加html的，此时springboot发现是转发，默认配置下他会自动去templates文件夹下找到对应的文件进行转发，如果return后写的是index.html会报404</p> <p><strong>重定向</strong></p> <pre class="prettyprint"><code class="language-java hljs"><span class="hljs-annotation">@Controller</span><span class="hljs-keyword">public</span><span class="hljs-class"><span class="hljs-keyword">class</span><span class="hljs-title">ThymeleafController</span> {<!-- --></span><span class="hljs-annotation">@RequestMapping</span>(value =<span class="hljs-string">"cs"</span>)<span class="hljs-keyword">public</span> String<span class="hljs-title">cs</span>(Model model) {<span class="hljs-keyword">return</span><span class="hljs-string">"redirect:index.html"</span>;     }</code></pre> <p>首先，添加redirect:这个毋庸置疑是mvc的语法问题，其次这里需要注意的是需要手动添加.html，否则会报404，而重定向则会自动去public文件夹下寻找。至于与webapp优先级别则同上述。</p> <h3 id="结论">结论</h3> <p>以上为本人在研究springboot时所想到的问题以及找到的一些规律(默认配置下)。至于上述规律的一些原因如果有兴趣的同学可以研究一下，毕竟本人研究的还比较浅显，如果有什么错误，还望提出，共同学习。</p> </div> 			                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-104074.htm">Feign远程调用以及Feign的最优使用</a></p>
+                                        <p>下一个：<a href="/news/article-104999.htm">南京宠物猫领养中心在哪里啊（南京宠物领养吧）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-4-26-clash-v2ray-ss-ssr.htm" title="Open VPN | 4月26日19.4M/S|免费SSR/Clash/Shadowrocket/V2ray订阅节点分享">Open VPN | 4月26日19.4M/S|免费SSR/Clash/Shadowrocket/V2ray订阅节点分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-13-node-share-links.htm" title="Open VPN | 4月13日22.6M/S|免费Shadowrocket/V2ray/SSR/Clash订阅节点分享">Open VPN | 4月13日22.6M/S|免费Shadowrocket/V2ray/SSR/Clash订阅节点分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-18-node-share-links.htm" title="Open VPN | 4月18日21.8M/S|免费SSR/V2ray/Clash/Shadowrocket订阅节点分享">Open VPN | 4月18日21.8M/S|免费SSR/V2ray/Clash/Shadowrocket订阅节点分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-25-free-node-subscribe-links.htm" title="Open VPN | 4月25日18.4M/S|免费Clash/V2ray/SSR/Shadowrocket订阅节点分享">Open VPN | 4月25日18.4M/S|免费Clash/V2ray/SSR/Shadowrocket订阅节点分享</a></li>
+                        <li class="py-2"><a href="/news/article-100966.htm" title="动物医院法定条件有哪些呢（动物医院归哪里管）">动物医院法定条件有哪些呢（动物医院归哪里管）</a></li>
+                        <li class="py-2"><a href="/news/article-96669.htm" title="动物疫苗周期和猪周期 动物疫苗周期和猪周期一样吗">动物疫苗周期和猪周期 动物疫苗周期和猪周期一样吗</a></li>
+                        <li class="py-2"><a href="/news/article-100378.htm" title="@order 注解用法">@order 注解用法</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-6-free-v2ray-subscribe.htm" title="Open VPN | 4月6日19.3M/S|免费Shadowrocket/V2ray/SSR/Clash订阅节点分享">Open VPN | 4月6日19.3M/S|免费Shadowrocket/V2ray/SSR/Clash订阅节点分享</a></li>
+                        <li class="py-2"><a href="/news/article-104074.htm" title="Feign远程调用以及Feign的最优使用">Feign远程调用以及Feign的最优使用</a></li>
+                        <li class="py-2"><a href="/news/article-92887.htm" title="猫根本不必打三联视频（猫咪不必打猫三联）">猫根本不必打三联视频（猫咪不必打猫三联）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">81</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">3</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+                <!-- service close -->
+            </div>
+        </div>
+        <!-- service-section close -->
+    </div>
+        <!-- footer start -->
+    <div class="tiny-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                                        <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    Open VPN 节点订阅中文官网 版权所有 Powered by WordPress
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- footer close -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/assets/website/js/frontend/surgenode/jquery.min.js" type="text/javascript"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/assets/website/js/frontend/surgenode/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/surgenode/menumaker.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/surgenode/navigation.js" type="text/javascript"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

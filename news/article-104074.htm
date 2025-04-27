@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://vpnopen.github.io/news/article-104074.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Feign远程调用以及Feign的最优使用</title>
+        <meta name="description" content="RestTemplate远程调用存在的问题 // 将localhost:8081修改为服务的名称即: userservice User user = restTemplate.getForObject" />
+        <link rel="icon" href="/assets/website/img/surgenode/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Open VPN 节点订阅中文官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://vpnopen.github.io/news/article-104074.htm" />
+    <meta property="og:site_name" content="Open VPN 节点订阅中文官网" />
+    <meta property="og:title" content="Feign远程调用以及Feign的最优使用" />
+    <meta property="og:image" content="https://vpnopen.github.io/uploads/20240723/336b55a070f84948b037104ce894dd5e.webp" />
+        <meta property="og:release_date" content="2025-04-25T07:09:23" />
+    <meta property="og:updated_time" content="2025-04-25T07:09:23" />
+        <meta property="og:description" content="RestTemplate远程调用存在的问题 // 将localhost:8081修改为服务的名称即: userservice User user = restTemplate.getForObject" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Feign远程调用以及Feign的最优使用">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- Bootstrap -->
+    <link href="/assets/website/css/surgenode/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/website/css/surgenode/style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="/assets/website/css/surgenode/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/website/css/G.css" />
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-79V7YWYKV1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-79V7YWYKV1');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!-- header-section start -->
+<div class="header navbar-fixed-top">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-2 col-sm-12 col-xs-12">
+                <a href="/" class="navbar-brand">
+                                <span>Open VPN</span>
+                                </a>
+            </div>
+            <div class="col-lg-8 col-md-10 col-sm-12 col-xs-12">
+                <div class="navigation">
+                    <div id="navigation">
+                        <ul>
+                                                        <li><a href="/" title="首页">首页</a></li>
+                                                        <li><a href="/free-nodes/" title="免费节点">免费节点</a></li>
+                                                        <li><a href="/paid-subscribe/" title="推荐机场">推荐机场</a></li>
+                                                        <li><a href="/news/" title="新闻资讯">新闻资讯</a></li>
+                                                        <li><a href="/client.htm" title="客户端">客户端</a></li>
+                                                    </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- header-section close -->
+    <!-- header-section close -->
+    <div class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="page-section">
+                    <div class="col-md-6">
+                        <div class="page-description">
+                            <h1 class="page-title">Feign远程调用以及Feign的最优使用</h1>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="page-breadcrumb">
+                            <ol class="breadcrumb">
+                                <li><a href="/">首页</a></li>
+                                <li><a href="/news/">新闻资讯</a></li>
+                                <li>正文</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--pageheader close -->
+        <!-- hero-section close -->
+    <div class="space-medium">
+        <!-- service-section start -->
+        <div class="container">
+            <div class="row">
+                <!-- service start -->
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Node官网订阅站" data-url="https://clashnode.github.io">
+                <div class="xcblog-blog-detail xcblog-blog-detail-defined">
+                      				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <h2> RestTemplate远程调用存在的问题</h2> <pre><code class="prism language-java"><span class="token comment">// 将localhost:8081修改为服务的名称即: userservice</span> <span class="token class-name">User</span> user <span class="token operator">=</span> restTemplate<span class="token punctuation">.</span><span class="token function">getForObject</span><span class="token punctuation">(</span><span class="token string">"http://userservice/user/"</span><span class="token operator">+</span>order<span class="token punctuation">.</span><span class="token function">getUserId</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token class-name">User</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span> order<span class="token punctuation">.</span><span class="token function">setUser</span><span class="token punctuation">(</span>user<span class="token punctuation">)</span><span class="token punctuation">;</span> </code></pre> <blockquote> <p>存在的问题：</p> <p>1、代码可读性差，编程体验不统一</p> <p>2、参数复杂URL难以维护</p> </blockquote> <h2> Feign简介</h2> <blockquote> <p>Feign是一个声明式的httpf服务端，Feign官方地址</p> <p>其作用就是帮助我们优雅的实现http请求的发送，解决RestTemplate远程调用存在的问题</p> </blockquote> <h2> Feign的使用</h2> <p>1、引入Feign的依赖</p> <pre><code class="prism language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">&gt;</span></span>       <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>org.springframework.cloud<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>       <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>spring-cloud-starter-openfeign<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">&gt;</span></span> </code></pre> <p>2、开启自动装配功能</p> <pre><code class="prism language-java"><span class="token annotation punctuation">@MapperScan</span><span class="token punctuation">(</span><span class="token string">"cn.itcast.order.mapper"</span><span class="token punctuation">)</span> <span class="token annotation punctuation">@SpringBootApplication</span> <span class="token annotation punctuation">@EnableFeignClients</span> <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">OrderApplication</span> <span class="token punctuation">{<!-- --></span>     <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>         <span class="token class-name">SpringApplication</span><span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span><span class="token class-name">OrderApplication</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> args<span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token punctuation">}</span> <span class="token punctuation">}</span> </code></pre> <p>3、编写Feign客户端做接口声明</p> <pre><code class="prism language-java"><span class="token comment">// 服务名称</span> <span class="token annotation punctuation">@FeignClient</span><span class="token punctuation">(</span><span class="token string">"userservice"</span><span class="token punctuation">)</span> <span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">UserClient</span> <span class="token punctuation">{<!-- --></span>     <span class="token comment">// 请求类型:GET</span>     <span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">"/user/{id}"</span><span class="token punctuation">)</span>     <span class="token class-name">User</span> <span class="token function">findById</span><span class="token punctuation">(</span><span class="token annotation punctuation">@PathVariable</span><span class="token punctuation">(</span><span class="token string">"id"</span><span class="token punctuation">)</span> <span class="token class-name">Long</span> id<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span> </code></pre> <p>4、在service中调用Feign接口</p> <pre><code class="prism language-java"><span class="token annotation punctuation">@Service</span> <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">OrderService</span> <span class="token punctuation">{<!-- --></span>      <span class="token annotation punctuation">@Autowired</span>     <span class="token keyword">private</span> <span class="token class-name">OrderMapper</span> orderMapper<span class="token punctuation">;</span>     <span class="token annotation punctuation">@Autowired</span>     <span class="token keyword">private</span> <span class="token class-name">UserClient</span> userClient<span class="token punctuation">;</span>      <span class="token keyword">public</span> <span class="token class-name">Order</span> <span class="token function">queryOrderById</span><span class="token punctuation">(</span><span class="token class-name">Long</span> orderId<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>         <span class="token class-name">Order</span> order <span class="token operator">=</span> orderMapper<span class="token punctuation">.</span><span class="token function">findById</span><span class="token punctuation">(</span>orderId<span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token comment">// 使用feign进行远程调用</span>         <span class="token class-name">User</span> user <span class="token operator">=</span> userClient<span class="token punctuation">.</span><span class="token function">findById</span><span class="token punctuation">(</span>order<span class="token punctuation">.</span><span class="token function">getUserId</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         order<span class="token punctuation">.</span><span class="token function">setUser</span><span class="token punctuation">(</span>user<span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token comment">// 4.返回</span>         <span class="token keyword">return</span> order<span class="token punctuation">;</span>     <span class="token punctuation">}</span> <span class="token punctuation">}</span> </code></pre> <blockquote> <p>Feign集成了Ribbon自动实现了负载均衡</p> </blockquote> <h2> Feign的自定义配置</h2> <blockquote> <p>Feign运行自定义配置来覆盖默认配置，可以修改的配置如下:</p> </blockquote> <table> <thead> <tr> <th>类型</th> <th>作用</th> <th>说明</th> </tr> </thead> <tbody> <tr> <td>feign.Logger.Level</td> <td>修改日志级别</td> <td>包含四种不同的级别：NONE、BASIC、HEADERS、FULL</td> </tr> <tr> <td>feign.codec.Decoder</td> <td>响应结果的解析器</td> <td>http远程调用的结果做解析，例如请求解析json字符串转为java对象</td> </tr> <tr> <td>feign.codec.Encoder</td> <td>请求参数编码</td> <td>将请求参数编码，便于通过http请求发送</td> </tr> <tr> <td>feign.Contract</td> <td>支持的注解格式</td> <td>默认是SpringMVC的注解</td> </tr> <tr> <td>feign.Retryer</td> <td>失败重试机制</td> <td>请求失败的重试机制，默认是没有，不过会使用Ribbon的重试机制</td> </tr> </tbody> </table> <blockquote> <p>一般需要修改的是日志级别</p> </blockquote> <h3> Feign修改日志</h3> <p>1、方式1：配置文件的方式</p> <p>全局生效</p> <pre><code class="prism language-yml"><span class="token key atrule">feign</span><span class="token punctuation">:</span>   <span class="token key atrule">client</span><span class="token punctuation">:</span>     <span class="token key atrule">config</span><span class="token punctuation">:</span>       <span class="token key atrule">default</span><span class="token punctuation">:</span>         <span class="token key atrule">loggerLevel</span><span class="token punctuation">:</span> FULL <span class="token comment">#feign的日志级别</span> </code></pre> <p>局部生效</p> <pre><code class="prism language-yml"><span class="token key atrule">feign</span><span class="token punctuation">:</span>   <span class="token key atrule">client</span><span class="token punctuation">:</span>     <span class="token key atrule">config</span><span class="token punctuation">:</span>       <span class="token key atrule">userservice</span><span class="token punctuation">:</span>    <span class="token comment"># 服务名称</span>         <span class="token key atrule">loggerLevel</span><span class="token punctuation">:</span> FULL <span class="token comment">#日志级别</span> </code></pre> <p>2、方式2：使用Java代码</p> <p>需要先说明一个Bean</p> <pre><code class="prism language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">FeignClientConfiguration</span> <span class="token punctuation">{<!-- --></span>     <span class="token annotation punctuation">@Bean</span>     <span class="token keyword">public</span> <span class="token class-name">Logger<span class="token punctuation">.</span>Level</span> <span class="token function">feignLogLevel</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>         <span class="token keyword">return</span> <span class="token class-name">Logger<span class="token punctuation">.</span>Level</span><span class="token punctuation">.</span>FULL<span class="token punctuation">;</span>     <span class="token punctuation">}</span> <span class="token punctuation">}</span> </code></pre> <blockquote> <p>注意：没有@Configuration注解</p> </blockquote> <p>如果是全局配置，则把他放到@EnableFeignClients这个注解中</p> <pre><code class="prism language-java"><span class="token annotation punctuation">@EnableFeignClients</span><span class="token punctuation">(</span>defaultConfiguration <span class="token operator">=</span> <span class="token class-name">FeignClientConfiguration</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span> </code></pre> <p>如果是局部配置，则把他放到@FeignClient这个注解中</p> <pre><code class="prism language-java"><span class="token annotation punctuation">@FeignClient</span><span class="token punctuation">(</span>value<span class="token operator">=</span><span class="token string">"userservice"</span><span class="token punctuation">,</span>configuration<span class="token operator">=</span><span class="token class-name">FeignClientConfiguration</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span> </code></pre> <h2> Feign性能优化</h2> <blockquote> <p>Feign底层的客户端实现：</p> <p>1、URLConnection:默认实现，不支持连接池</p> <p>2、Apache HttpClient:支持连接池</p> <p>3、OKHttp:支持连接池</p> <p>日志级别，最好用basic或none</p> </blockquote> <h3> Feign连接池配置</h3> <p>1、引入HttpClient依赖</p> <pre><code class="prism language-xml"> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">&gt;</span></span>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>io.github.openfeign<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>feign-httpclient<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">&gt;</span></span> </code></pre> <p>2、配置连接池</p> <pre><code class="prism language-yml"><span class="token key atrule">feign</span><span class="token punctuation">:</span>   <span class="token key atrule">client</span><span class="token punctuation">:</span>     <span class="token key atrule">config</span><span class="token punctuation">:</span>       <span class="token key atrule">default</span><span class="token punctuation">:</span>          <span class="token key atrule">loggerLevel</span><span class="token punctuation">:</span> none   <span class="token key atrule">httpclient</span><span class="token punctuation">:</span>     <span class="token key atrule">enabled</span><span class="token punctuation">:</span> <span class="token boolean important">true</span> <span class="token comment">#开启feign对httpclient的支持</span>     <span class="token key atrule">max-connections</span><span class="token punctuation">:</span> <span class="token number">200</span> <span class="token comment">#最大连接数</span>     <span class="token key atrule">max-connections-per-route</span><span class="token punctuation">:</span> <span class="token number">50</span> <span class="token comment">#每个路径的最大连接数</span> </code></pre> <h2> Feign使用的优化</h2> <p>1、在父工程中添加一个Maven模块，将feign相关的config、pojo、client放到这个模块中，如图<br /><img decoding="async" src="http://img.555519.xyz/uploads/20230204/e11cd016fc974c6991e240a520c0ab76.jpg" alt="Feign远程调用以及Feign的最优使用"></p> <blockquote> <p>注意：这里需要引入Feign相关依赖</p> </blockquote> <pre><code class="prism language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">&gt;</span></span>     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>org.springframework.cloud<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>spring-cloud-starter-openfeign<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">&gt;</span></span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">&gt;</span></span>     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>io.github.openfeign<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>feign-httpclient<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">&gt;</span></span> </code></pre> <blockquote> <p>然后使用maven进行打包，打包后在需要使用的maven项目中的pom文件进行引用</p> </blockquote> <pre><code class="prism language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">&gt;</span></span>     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>cn.itcast.demo<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>feign-api<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">&gt;</span></span>1.0<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">&gt;</span></span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">&gt;</span></span> </code></pre> <blockquote> <p>在启动类中的@EnableFeignClients指定引入的Client</p> </blockquote> <pre><code class="prism language-java"><span class="token annotation punctuation">@MapperScan</span><span class="token punctuation">(</span><span class="token string">"cn.itcast.order.mapper"</span><span class="token punctuation">)</span> <span class="token annotation punctuation">@SpringBootApplication</span> <span class="token comment">// clients指定对应的client</span> <span class="token annotation punctuation">@EnableFeignClients</span><span class="token punctuation">(</span>clients <span class="token operator">=</span> <span class="token punctuation">{<!-- --></span><span class="token class-name">UserClient</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">}</span><span class="token punctuation">,</span>defaultConfiguration <span class="token operator">=</span> <span class="token class-name">FeignClientConfiguration</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span> <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">OrderApplication</span> <span class="token punctuation">{<!-- --></span>     <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>         <span class="token class-name">SpringApplication</span><span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span><span class="token class-name">OrderApplication</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> args<span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token punctuation">}</span> <span class="token punctuation">}</span> </code></pre> <blockquote> <p>也可以扫描Feign模块的Client所在的包</p> </blockquote> <pre><code class="prism language-java"><span class="token annotation punctuation">@MapperScan</span><span class="token punctuation">(</span><span class="token string">"cn.itcast.order.mapper"</span><span class="token punctuation">)</span> <span class="token annotation punctuation">@SpringBootApplication</span> <span class="token comment">// basePackages指定client所在的包</span> <span class="token annotation punctuation">@EnableFeignClients</span><span class="token punctuation">(</span>basePackages <span class="token operator">=</span> <span class="token string">"cn.itcase.feign.clients"</span><span class="token punctuation">,</span>defaultConfiguration <span class="token operator">=</span> <span class="token class-name">FeignClientConfiguration</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span> <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">OrderApplication</span> <span class="token punctuation">{<!-- --></span>     <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>         <span class="token class-name">SpringApplication</span><span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span><span class="token class-name">OrderApplication</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> args<span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token punctuation">}</span> <span class="token punctuation">}</span> </code></pre> </p></div> 			                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-103395.htm">厦门领养猫咪贴吧 厦门领养猫咪贴吧群</a></p>
+                                        <p>下一个：<a href="/news/article-104075.htm">关于springboot转发重定向以及受保护目录的一些规律</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-4-15-node-share-links.htm" title="Open VPN | 4月15日18.2M/S|免费SSR/Clash/Shadowrocket/V2ray订阅节点分享">Open VPN | 4月15日18.2M/S|免费SSR/Clash/Shadowrocket/V2ray订阅节点分享</a></li>
+                        <li class="py-2"><a href="/news/article-101724.htm" title="当了7年超级奶爸，为什么李承铉一回归舞台，还能成为王炸？">当了7年超级奶爸，为什么李承铉一回归舞台，还能成为王炸？</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-9-node-share.htm" title="Open VPN | 4月9日22M/S|免费SSR/Clash/V2ray/Shadowrocket订阅节点分享">Open VPN | 4月9日22M/S|免费SSR/Clash/V2ray/Shadowrocket订阅节点分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-7-free-node-subscribe.htm" title="Open VPN | 4月7日18M/S|免费V2ray/SSR/Clash/Shadowrocket订阅节点分享">Open VPN | 4月7日18M/S|免费V2ray/SSR/Clash/Shadowrocket订阅节点分享</a></li>
+                        <li class="py-2"><a href="/news/article-91141.htm" title="代理宠物粮食生意怎么样 代理宠物粮食生意怎么样啊">代理宠物粮食生意怎么样 代理宠物粮食生意怎么样啊</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-4-node-share-links.htm" title="Open VPN | 4月4日19.7M/S|免费Shadowrocket/SSR/Clash/V2ray订阅节点分享">Open VPN | 4月4日19.7M/S|免费Shadowrocket/SSR/Clash/V2ray订阅节点分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-1-free-node-subscribe.htm" title="Open VPN | 4月1日20M/S|免费SSR/Shadowrocket/V2ray/Clash订阅节点分享">Open VPN | 4月1日20M/S|免费SSR/Shadowrocket/V2ray/Clash订阅节点分享</a></li>
+                        <li class="py-2"><a href="/news/article-98148.htm" title="JavaScript如何从数组中滤除素数">JavaScript如何从数组中滤除素数</a></li>
+                        <li class="py-2"><a href="/news/article-87061.htm" title="开一家宠物医院赚钱吗多少钱（开一家宠物医院大概需要投资多少钱）">开一家宠物医院赚钱吗多少钱（开一家宠物医院大概需要投资多少钱）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-10-free-high-speed-nodes.htm" title="Open VPN | 4月10日21.3M/S|免费Clash/V2ray/SSR/Shadowrocket订阅节点分享">Open VPN | 4月10日21.3M/S|免费Clash/V2ray/SSR/Shadowrocket订阅节点分享</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">81</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">3</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+                <!-- service close -->
+            </div>
+        </div>
+        <!-- service-section close -->
+    </div>
+        <!-- footer start -->
+    <div class="tiny-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                                        <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                    Open VPN 节点订阅中文官网 版权所有 Powered by WordPress
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- footer close -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/assets/website/js/frontend/surgenode/jquery.min.js" type="text/javascript"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/assets/website/js/frontend/surgenode/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/surgenode/menumaker.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/surgenode/navigation.js" type="text/javascript"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
