@@ -1,4 +1,4 @@
-# Open VPN | 2月9日22.8M/S|免费Singbox节点/V2ray节点/Clash节点/Shadowrocket节点/SSR节点订阅节点分享  更新时间 2026-02-09 11:04:54
+# Open VPN | 2月16日21M/S|免费Singbox节点/SSR节点/V2ray节点/Clash节点/Shadowrocket节点订阅节点分享  更新时间 2026-02-16 05:45:15
 所有免费clash节点都爬取自网络，请勿用于非法用途 。节点地址：<a href="https://vpnopen.github.io" target="_blank">点击跳转</a>
 
 ## clash使用教程：
@@ -9,23 +9,23 @@
 
 ### 免费Clash节点订阅链接
 
-- https://vpnopen.github.io/uploads/2026/02/0-20260209.yaml
-- https://vpnopen.github.io/uploads/2026/02/1-20260209.yaml
-- https://vpnopen.github.io/uploads/2026/02/2-20260209.yaml
-- https://vpnopen.github.io/uploads/2026/02/3-20260209.yaml
-- https://vpnopen.github.io/uploads/2026/02/4-20260209.yaml
+- https://vpnopen.github.io/uploads/2026/02/0-20260216.yaml
+- https://vpnopen.github.io/uploads/2026/02/1-20260216.yaml
+- https://vpnopen.github.io/uploads/2026/02/2-20260216.yaml
+- https://vpnopen.github.io/uploads/2026/02/3-20260216.yaml
+- https://vpnopen.github.io/uploads/2026/02/4-20260216.yaml
 
 ### 免费V2ray节点订阅链接
 
-- https://vpnopen.github.io/uploads/2026/02/0-20260209.txt
-- https://vpnopen.github.io/uploads/2026/02/1-20260209.txt
-- https://vpnopen.github.io/uploads/2026/02/2-20260209.txt
-- https://vpnopen.github.io/uploads/2026/02/3-20260209.txt
-- https://vpnopen.github.io/uploads/2026/02/4-20260209.txt
+- https://vpnopen.github.io/uploads/2026/02/0-20260216.txt
+- https://vpnopen.github.io/uploads/2026/02/1-20260216.txt
+- https://vpnopen.github.io/uploads/2026/02/2-20260216.txt
+- https://vpnopen.github.io/uploads/2026/02/3-20260216.txt
+- https://vpnopen.github.io/uploads/2026/02/4-20260216.txt
 
 ### 免费Sing-box节点订阅链接
 
-- https://vpnopen.github.io/uploads/2026/02/20260209.json
+- https://vpnopen.github.io/uploads/2026/02/20260216.json
 
 ## 更多Clash节点订阅 ：
 
